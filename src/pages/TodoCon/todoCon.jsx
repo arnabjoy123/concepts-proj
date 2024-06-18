@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TodoProvider } from "../../Contexts/TodoContext";
 import TodoForm from "../../components/TodoForm/TodoForm";
 import TodoItem from "../../components/TodoItem/TodoItem";
@@ -10,10 +10,12 @@ export default function TodoCon() {
     setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
   };
 
-  const updateTodo = (id, todo) => {
-    setTodos((prev) => {
-      prev.map((prevtodo) => (prevtodo.id === id ? todo : prevtodo));
-    });
+  const updateTodo = (id, updatedTodo) => {
+    setTodos((prev) =>
+      prev.map((prevtodo) =>
+        prevtodo.id === id ? { ...prevtodo, ...updatedTodo } : prevtodo
+      )
+    );
   };
 
   const removeTodo = (id) => {
@@ -29,15 +31,26 @@ export default function TodoCon() {
       )
     );
   };
-  console.log(todos);
+
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem("todos"));
+    if (todos && todos.length > 0) {
+      setTodos(todos);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   return (
     <TodoProvider
       value={{ todos, addTodo, updateTodo, removeTodo, todoToggle }}
     >
-      <div>
+      <div className="max-w-md mx-auto mt-8">
         <TodoForm />
         {todos.map((todo) => (
-          <div key={todo.id}>
+          <div key={todo.id} className="my-4">
             <TodoItem todo={todo} />
           </div>
         ))}

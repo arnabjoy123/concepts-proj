@@ -12,15 +12,18 @@ function TodoForm() {
   }
 
   return (
-    <div>
+    <div className="flex items-center mb-4">
       <input
-        className="border"
+        className="border rounded-l py-2 px-4 w-full"
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
         type="text"
-        placeholder="write todo...."
+        placeholder="Write todo..."
       />
-      <button className="border" onClick={add}>
+      <button
+        className="bg-blue-500 text-white rounded-r py-2 px-4 ml-2 hover:bg-blue-600"
+        onClick={add}
+      >
         Add
       </button>
     </div>

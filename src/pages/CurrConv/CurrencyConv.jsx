@@ -24,7 +24,7 @@ function CurrencyConv() {
 
   console.log(options);
   return (
-    <div className="p-8 bg-gray-100 min-h-screen flex flex-col items-center">
+    <div className="p-8 bg-gray-100 min-h-screen flex flex-col items-center dark:bg-gray-800">
       <h1 className="text-3xl font-bold mb-8">Currency Converter</h1>
       <div className="mb-6 w-full max-w-md">
         <InputBox

@@ -32,7 +32,7 @@ function Pass() {
   }
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-100">
+    <div className="h-screen flex items-center justify-center bg-gray-100  dark:bg-gray-800">
       <div className="p-6 bg-white rounded shadow-md w-80">
         <input
           type="text"

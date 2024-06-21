@@ -47,13 +47,15 @@ export default function TodoCon() {
     <TodoProvider
       value={{ todos, addTodo, updateTodo, removeTodo, todoToggle }}
     >
-      <div className="max-w-md mx-auto mt-8">
-        <TodoForm />
-        {todos.map((todo) => (
-          <div key={todo.id} className="my-4">
-            <TodoItem todo={todo} />
-          </div>
-        ))}
+      <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-800">
+        <div className="max-w-md mx-auto mt-8 flex-grow">
+          <TodoForm />
+          {todos.map((todo) => (
+            <div key={todo.id} className="my-4">
+              <TodoItem todo={todo} />
+            </div>
+          ))}
+        </div>
       </div>
     </TodoProvider>
   );

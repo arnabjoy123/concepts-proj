@@ -24,7 +24,7 @@ function TodoItem({ todo }) {
   }
 
   return (
-    <div className="flex items-center justify-between border p-2 rounded mb-2">
+    <div className="flex items-center justify-between border p-2 rounded mb-2 bg-white">
       <input
         type="checkbox"
         checked={todo.completed}
